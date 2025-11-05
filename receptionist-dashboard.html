@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="dashboard">
-        <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-brand">🏥 Apollo CMS</div>
             <div class="nav-items">
@@ -17,9 +16,7 @@
             </div>
         </nav>
         
-        <!-- Dashboard Content -->
         <div class="dashboard-container">
-            <!-- Header with Welcome Message -->
             <div class="dashboard-welcome">
                 <div class="welcome-content">
                     <h1>Welcome Back! 👋</h1>
@@ -30,7 +27,6 @@
                 </div>
             </div>
             
-            <!-- Quick Stats -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">👥</div>
@@ -49,7 +45,6 @@
                 </div>
             </div>
 
-            <!-- Quick Actions -->
             <div class="quick-actions">
                 <div class="action-card">
                     <div class="action-icon">📝</div>
@@ -69,7 +64,6 @@
                 </div>
             </div>
 
-            <!-- Info Section -->
             <div class="info-section">
                 <div class="info-card">
                     <h4>💡 Your Responsibilities</h4>
@@ -81,7 +75,6 @@
                 </div>
             </div>
 
-            <!-- Patient List -->
             <div class="patient-section">
                 <div class="section-header">
                     <div>
@@ -95,7 +88,6 @@
                 
                 <div id="patientList" class="patient-cards"></div>
 
-                <!-- Empty State -->
                 <div id="emptyState" class="empty-state" style="display: none;">
                     <div class="empty-icon">📭</div>
                     <h3>No patients registered yet</h3>
@@ -104,7 +96,6 @@
                 </div>
             </div>
 
-            <!-- Footer Info -->
             <div class="dashboard-footer-info">
                 <div class="footer-info-item">
                     <span class="footer-icon">📋</span>
@@ -129,7 +120,6 @@
                 </div>
             </div>
             
-            <!-- Add Patient Modal -->
             <div id="addPatientModal" class="modal">
                 <div class="modal-content">
                     <button class="close">&times;</button>
@@ -176,7 +166,6 @@
                 </div>
             </div>
             
-            <!-- Bill Modal -->
             <div id="billModal" class="modal">
                 <div class="modal-content">
                     <button class="close">&times;</button>
@@ -194,7 +183,6 @@
     </div>
 
     <script>
-        // Set current date
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
             weekday: 'long', 
             year: 'numeric', 
@@ -202,7 +190,6 @@
             day: 'numeric' 
         });
 
-        // Extra empty state button
         document.getElementById('addPatientBtnEmpty').addEventListener('click', () => {
             document.getElementById('addPatientModal').classList.add('show');
         });

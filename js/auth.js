@@ -9,13 +9,11 @@ import {
 } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 import Logger from './logger.js';
 
-// Determine if we're on doctor or receptionist page
 const isDoctor = window.location.pathname.includes('doctor');
 const userType = isDoctor ? 'doctor' : 'receptionist';
 
 console.log('Auth page loaded:', { isDoctor, userType, pathname: window.location.pathname });
 
-// Get form elements
 const loginForm = document.getElementById(`${userType}LoginForm`);
 const signupForm = document.getElementById(`${userType}SignupForm`);
 const toggleSignup = document.getElementById('toggleSignup');
@@ -24,7 +22,6 @@ const messageDiv = document.getElementById('message');
 
 console.log('Form elements:', { loginForm, signupForm, toggleSignup, toggleLogin, messageDiv });
 
-// Toggle between login and signup
 if (toggleSignup) {
     toggleSignup.addEventListener('click', (e) => {
         e.preventDefault();
@@ -45,14 +42,12 @@ if (toggleLogin) {
     });
 }
 
-// Show message
 function showMessage(message, type) {
     messageDiv.textContent = message;
     messageDiv.className = `message ${type}`;
     messageDiv.style.display = 'block';
 }
 
-// Login
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -67,7 +62,6 @@ if (loginForm) {
             
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             
-            // Store user type in localStorage
             localStorage.setItem('userType', userType);
             localStorage.setItem('userId', userCredential.user.uid);
             localStorage.setItem('userName', userCredential.user.email);
@@ -89,7 +83,6 @@ if (loginForm) {
     });
 }
 
-// Signup
 if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -106,7 +99,6 @@ if (signupForm) {
         }
         
         try {
-            // Validate inputs
             if (!name || !email || !password) {
                 throw new Error('Please fill all fields');
             }
@@ -122,7 +114,6 @@ if (signupForm) {
             
             console.log('User created, saving to Firestore...');
             
-            // Store user data in Firestore
             await setDoc(doc(db, userType + 's', userCredential.user.uid), {
                 uid: userCredential.user.uid,
                 name,

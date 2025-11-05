@@ -15,7 +15,6 @@ import Logger from './logger.js';
 
 console.log('Receptionist.js loading...', { db, auth });
 
-// Check authentication
 auth.onAuthStateChanged(async (user) => {
     console.log('Auth state changed:', user ? 'logged in' : 'logged out');
     
@@ -27,7 +26,6 @@ auth.onAuthStateChanged(async (user) => {
     
     Logger.info('Receptionist dashboard loaded', { userId: user.uid });
     
-    // Load receptionist info
     try {
         const receptionistDoc = await getDoc(doc(db, 'receptionists', user.uid));
         if (receptionistDoc.exists()) {
@@ -40,7 +38,6 @@ auth.onAuthStateChanged(async (user) => {
     loadPatients();
 });
 
-// Logout
 document.getElementById('logoutBtn').addEventListener('click', async () => {
     try {
         await signOut(auth);
@@ -53,13 +50,11 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
     }
 });
 
-// Add patient button
 document.getElementById('addPatientBtn').addEventListener('click', () => {
     console.log('Add patient button clicked');
     document.getElementById('addPatientModal').classList.add('show');
 });
 
-// Close modals
 document.querySelectorAll('.close').forEach(closeBtn => {
     closeBtn.addEventListener('click', () => {
         console.log('Closing modal');
@@ -69,7 +64,6 @@ document.querySelectorAll('.close').forEach(closeBtn => {
     });
 });
 
-// Add patient form submission
 document.getElementById('addPatientForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     console.log('Add patient form submitted');
@@ -77,7 +71,6 @@ document.getElementById('addPatientForm').addEventListener('submit', async (e) =
     try {
         const today = new Date().toISOString().split('T')[0];
         
-        // Get next token number
         const patientsRef = collection(db, 'patients');
         console.log('Creating query...');
         
@@ -128,7 +121,6 @@ document.getElementById('addPatientForm').addEventListener('submit', async (e) =
     }
 });
 
-// Load patients
 async function loadPatients() {
     try {
         console.log('Loading patients...');
@@ -166,7 +158,6 @@ async function loadPatients() {
             patientList.appendChild(patientCard);
         });
         
-        // Update stats
         document.getElementById('totalPatients').textContent = totalPatients;
         document.getElementById('todayTokens').textContent = todayTokens;
         document.getElementById('pendingBills').textContent = pendingBills;
@@ -180,7 +171,6 @@ async function loadPatients() {
     }
 }
 
-// Create patient card
 function createPatientCard(patientId, patient) {
     const card = document.createElement('div');
     card.className = 'patient-card';
@@ -208,7 +198,6 @@ function createPatientCard(patientId, patient) {
     return card;
 }
 
-// Generate bill
 window.generateBill = async function(patientId) {
     try {
         console.log('Generating bill for patient:', patientId);
@@ -259,13 +248,11 @@ window.generateBill = async function(patientId) {
         
         billModal.classList.add('show');
         
-        // Print bill
         document.getElementById('printBill').onclick = () => {
             console.log('Printing bill');
             window.print();
         };
         
-        // Mark as paid
         document.getElementById('markPaid').onclick = async () => {
             try {
                 console.log('Marking bill as paid');

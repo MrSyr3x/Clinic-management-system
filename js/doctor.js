@@ -13,7 +13,6 @@ import Logger from './logger.js';
 
 console.log('Doctor.js loading...', { db, auth });
 
-// Check authentication
 auth.onAuthStateChanged(async (user) => {
     console.log('Auth state changed:', user ? 'logged in' : 'logged out');
     
@@ -25,7 +24,6 @@ auth.onAuthStateChanged(async (user) => {
     
     Logger.info('Doctor dashboard loaded', { userId: user.uid });
     
-    // Load doctor info
     try {
         const doctorDoc = await getDoc(doc(db, 'doctors', user.uid));
         if (doctorDoc.exists()) {
@@ -38,7 +36,6 @@ auth.onAuthStateChanged(async (user) => {
     loadPatients();
 });
 
-// Logout
 document.getElementById('logoutBtn').addEventListener('click', async () => {
     try {
         await signOut(auth);
@@ -51,7 +48,6 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
     }
 });
 
-// Load patients - FIXED VERSION
 async function loadPatients() {
     try {
         console.log('Loading patients for doctor...');
@@ -61,7 +57,6 @@ async function loadPatients() {
         const q = query(
             patientsRef,
             where('date', '==', today)
-            // Removed orderBy - we'll sort in JavaScript
         );
         
         console.log('Executing query...');
@@ -76,7 +71,6 @@ async function loadPatients() {
         let pendingCount = 0;
         let completedCount = 0;
         
-        // Collect all patients
         const patients = [];
         querySnapshot.forEach((doc) => {
             const patient = doc.data();
@@ -90,18 +84,15 @@ async function loadPatients() {
             }
         });
         
-        // Sort by token number in JavaScript
         patients.sort((a, b) => a.tokenNumber - b.tokenNumber);
         
         console.log('Sorted patients:', patients);
         
-        // Add cards to DOM
         patients.forEach(patient => {
             const patientCard = createPatientCard(patient.id, patient);
             patientList.appendChild(patientCard);
         });
         
-        // Update stats
         document.getElementById('patientsToday').textContent = patientsToday;
         document.getElementById('pendingCount').textContent = pendingCount;
         document.getElementById('completedCount').textContent = completedCount;
@@ -116,7 +107,6 @@ async function loadPatients() {
     }
 }
 
-// Create patient card
 function createPatientCard(patientId, patient) {
     const card = document.createElement('div');
     card.className = 'patient-card';
@@ -146,7 +136,6 @@ function createPatientCard(patientId, patient) {
     return card;
 }
 
-// Open prescription modal
 window.openPrescriptionModal = async function(patientId) {
     console.log('Opening prescription modal for patient:', patientId);
     
@@ -178,7 +167,6 @@ window.openPrescriptionModal = async function(patientId) {
     }
 };
 
-// Save prescription
 async function savePrescription(patientId) {
     try {
         console.log('Saving prescription for patient:', patientId);
@@ -214,7 +202,6 @@ async function savePrescription(patientId) {
     }
 }
 
-// View prescription
 window.viewPrescription = async function(patientId) {
     try {
         console.log('Viewing prescription for patient:', patientId);
@@ -244,7 +231,6 @@ CONSULTATION FEE: ₹${patient.consultationFee || 'N/A'}
     }
 };
 
-// Close modal
 document.querySelector('.close')?.addEventListener('click', () => {
     document.getElementById('prescriptionModal').classList.remove('show');
 });

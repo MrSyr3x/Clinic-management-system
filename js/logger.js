@@ -1,4 +1,3 @@
-// Simple logging utility
 class Logger {
     static log(level, message, data = null) {
         const timestamp = new Date().toISOString();
@@ -11,12 +10,10 @@ class Logger {
         
         console.log(`[${timestamp}] [${level}] ${message}`, data || '');
         
-        // Store logs in localStorage for persistence
         try {
             const logs = JSON.parse(localStorage.getItem('clinicLogs') || '[]');
             logs.push(logEntry);
             
-            // Keep only last 1000 logs
             if (logs.length > 1000) {
                 logs.shift();
             }
