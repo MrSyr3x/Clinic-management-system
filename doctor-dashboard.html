@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Apollo CMS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">🏥 Apollo CMS</div>
+            <div class="nav-items">
+                <span id="doctorName">Doctor</span>
+                <button id="logoutBtn" class="btn btn-primary">Logout</button>
+            </div>
+        </nav>
+        
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <div>
+                    <h1>Doctor Dashboard</h1>
+                    <p class="header-subtitle">Manage consultations and patient care</p>
+                </div>
+            </div>
+            
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Patients Today</h3>
+                    <div class="stat-number" id="patientsToday">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending Consultations</h3>
+                    <div class="stat-number" id="pendingCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed Today</h3>
+                    <div class="stat-number" id="completedCount">0</div>
+                </div>
+            </div>
+            
+            <!-- Patient Queue -->
+            <div class="patient-list-section">
+                <h2>Patient Queue</h2>
+                <div id="patientList" class="patient-cards"></div>
+            </div>
+            
+            <!-- Prescription Modal -->
+            <div id="prescriptionModal" class="modal">
+                <div class="modal-content">
+                    <button class="close">&times;</button>
+                    <h2>Add Prescription</h2>
+                    
+                    <div id="patientInfo" class="patient-info-box"></div>
+                    
+                    <form id="prescriptionForm">
+                        <div class="form-group">
+                            <label for="diagnosis">Diagnosis</label>
+                            <textarea id="diagnosis" rows="3" required placeholder="Enter diagnosis..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="prescription">Prescription</label>
+                            <textarea id="prescription" rows="5" required placeholder="Enter medicines and dosage..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" rows="3" placeholder="Any additional instructions..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="consultationFee">Consultation Fee (₹)</label>
+                            <input type="number" id="consultationFee" required placeholder="500">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Save Prescription</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/doctor.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist Login - Apollo CMS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-page">
+        <!-- Sidebar -->
+        <div class="login-sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-logo">🏥</div>
+                <h2>Apollo CMS</h2>
+                <p>Receptionist Portal</p>
+                
+                <svg class="sidebar-illustration" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="80" r="40" fill="#ffffff" opacity="0.9"/>
+                    <path d="M 120 140 L 120 240 L 180 240 L 180 140 Q 150 120 120 140" fill="#ffffff" opacity="0.9"/>
+                    <rect x="100" y="250" width="100" height="50" fill="#ffffff" opacity="0.8" rx="4"/>
+                    <circle cx="130" cy="270" r="4" fill="#0066cc"/>
+                    <circle cx="170" cy="270" r="4" fill="#0066cc"/>
+                </svg>
+
+                <div class="sidebar-features">
+                    <h4>Features for Receptionists</h4>
+                    <ul>
+                        <li>📝 Register patients</li>
+                        <li>🎫 Generate tokens</li>
+                        <li>💳 Manage bills</li>
+                        <li>📊 View reports</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="login-form-wrapper">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            
+            <div class="login-form-container">
+                <!-- Login Form -->
+                <form id="receptionistLoginForm">
+                    <div class="form-header">
+                        <h1>Receptionist Login</h1>
+                        <p>Sign in to your Apollo CMS account</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="receptionist@apollo.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required placeholder="••••••••">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    
+                    <div class="toggle-form">
+                        <p>Don't have an account? <a href="#" id="toggleSignup">Create one</a></p>
+                    </div>
+                </form>
+                
+                <!-- Signup Form -->
+                <form id="receptionistSignupForm" style="display: none;">
+                    <div class="form-header">
+                        <h1>Create Receptionist Account</h1>
+                        <p>Register as clinic staff</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" required placeholder="Jane Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" required placeholder="receptionist@apollo.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required placeholder="••••••••">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    
+                    <div class="toggle-form">
+                        <p>Already have an account? <a href="#" id="toggleLogin">Sign In</a></p>
+                    </div>
+                </form>
+                
+                <div id="message" class="message"></div>
+
+                <!-- Extra Info -->
+                <div class="login-info">
+                    <p>🔒 <strong>Secure Login</strong> - Your credentials are encrypted</p>
+                    <p>⚡ <strong>Instant Access</strong> - Start managing operations immediately</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist Dashboard - Apollo CMS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">🏥 Apollo CMS</div>
+            <div class="nav-items">
+                <span id="receptionistName">Receptionist</span>
+                <button id="logoutBtn" class="btn btn-primary">Logout</button>
+            </div>
+        </nav>
+        
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- Header with Welcome Message -->
+            <div class="dashboard-welcome">
+                <div class="welcome-content">
+                    <h1>Welcome Back! 👋</h1>
+                    <p>Manage registrations and clinic operations</p>
+                </div>
+                <div class="welcome-date">
+                    <span id="currentDate"></span>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <h3>Total Patients</h3>
+                    <div class="stat-number" id="totalPatients">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎫</div>
+                    <h3>Today's Tokens</h3>
+                    <div class="stat-number" id="todayTokens">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <h3>Pending Bills</h3>
+                    <div class="stat-number" id="pendingBills">0</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="action-card">
+                    <div class="action-icon">📝</div>
+                    <h4>Patient Registration</h4>
+                    <p>Register new patients and get token numbers</p>
+                    <button id="addPatientBtn" class="btn btn-primary btn-sm">Register Now</button>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">💳</div>
+                    <h4>Bill Management</h4>
+                    <p>Generate and manage patient bills</p>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">📊</div>
+                    <h4>Daily Reports</h4>
+                    <p>View clinic statistics and reports</p>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <div class="info-card">
+                    <h4>💡 Your Responsibilities</h4>
+                    <p>Register patients, generate tokens, manage bills, and maintain accurate clinic records. Your role is crucial for smooth operations.</p>
+                </div>
+                <div class="info-card">
+                    <h4>✨ Quick Tips</h4>
+                    <p>Token numbers are auto-generated. Collect fees after consultation and mark bills as paid. Keep patient information accurate.</p>
+                </div>
+            </div>
+
+            <!-- Patient List -->
+            <div class="patient-section">
+                <div class="section-header">
+                    <div>
+                        <h2>Today's Patients</h2>
+                        <p class="section-subtitle">Manage registrations and billing</p>
+                    </div>
+                    <div class="queue-status">
+                        <span class="status-indicator">🟢 Active</span>
+                    </div>
+                </div>
+                
+                <div id="patientList" class="patient-cards"></div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <div class="empty-icon">📭</div>
+                    <h3>No patients registered yet</h3>
+                    <p>Start by registering the first patient of the day</p>
+                    <button id="addPatientBtnEmpty" class="btn btn-primary">Register First Patient</button>
+                </div>
+            </div>
+
+            <!-- Footer Info -->
+            <div class="dashboard-footer-info">
+                <div class="footer-info-item">
+                    <span class="footer-icon">📋</span>
+                    <div>
+                        <strong>Accurate Records</strong>
+                        <p>Maintain complete and accurate patient information</p>
+                    </div>
+                </div>
+                <div class="footer-info-item">
+                    <span class="footer-icon">💼</span>
+                    <div>
+                        <strong>Professional Service</strong>
+                        <p>Provide excellent customer service to patients</p>
+                    </div>
+                </div>
+                <div class="footer-info-item">
+                    <span class="footer-icon">📊</span>
+                    <div>
+                        <strong>Track Revenue</strong>
+                        <p>Monitor daily collections and clinic operations</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add Patient Modal -->
+            <div id="addPatientModal" class="modal">
+                <div class="modal-content">
+                    <button class="close">&times;</button>
+                    <h2>Register New Patient</h2>
+                    
+                    <form id="addPatientForm">
+                        <div class="form-group">
+                            <label for="patientName">Patient Name</label>
+                            <input type="text" id="patientName" required placeholder="John Doe">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patientAge">Age</label>
+                            <input type="number" id="patientAge" required placeholder="30">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patientGender">Gender</label>
+                            <select id="patientGender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patientPhone">Phone Number</label>
+                            <input type="tel" id="patientPhone" required placeholder="9876543210">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patientAddress">Address</label>
+                            <textarea id="patientAddress" rows="3" placeholder="Enter address..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="symptoms">Symptoms</label>
+                            <textarea id="symptoms" rows="3" required placeholder="Describe symptoms..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Generate Token</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Bill Modal -->
+            <div id="billModal" class="modal">
+                <div class="modal-content">
+                    <button class="close">&times;</button>
+                    <h2>Patient Bill</h2>
+                    
+                    <div id="billDetails" class="bill-container"></div>
+                    
+                    <div class="modal-actions">
+                        <button id="printBill" class="btn btn-primary btn-block">🖨️ Print Bill</button>
+                        <button id="markPaid" class="btn btn-secondary btn-block">✅ Mark as Paid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+
+        // Extra empty state button
+        document.getElementById('addPatientBtnEmpty').addEventListener('click', () => {
+            document.getElementById('addPatientModal').classList.add('show');
+        });
+    </script>
+    <script type="module" src="js/receptionist.js"></script>
+</body>
+</html>
