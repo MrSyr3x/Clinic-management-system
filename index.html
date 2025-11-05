@@ -3,31 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinic Management System</title>
+    <title>Apollo Clinic Management System</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏥 Clinic Management System</h1>
-            <p>Streamline Doctor-Receptionist Communication</p>
-        </div>
-        
-        <div class="login-options">
-            <div class="login-card">
-                <div class="icon">👨‍⚕️</div>
-                <h2>Doctor Login</h2>
-                <p>Access patient records and prescriptions</p>
-                <a href="doctor-login.html" class="btn btn-primary">Login as Doctor</a>
+    <!-- Navigation -->
+    <nav class="navbar-landing">
+        <div class="container navbar-content">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <span class="logo-text">Apollo CMS</span>
             </div>
-            
-            <div class="login-card">
-                <div class="icon">👔</div>
-                <h2>Receptionist Login</h2>
-                <p>Manage tokens and patient registration</p>
-                <a href="receptionist-login.html" class="btn btn-secondary">Login as Receptionist</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#portals">Portals</a>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Apollo Clinic Management System</h1>
+                <p class="hero-subtitle">Professional Healthcare Management Platform</p>
+                <p class="hero-description">Streamline your clinic operations with our enterprise-grade system designed for healthcare professionals</p>
+                
+                <div class="hero-cta">
+                    <a href="doctor-login.html" class="btn btn-primary">Doctor Portal</a>
+                    <a href="receptionist-login.html" class="btn btn-secondary">Receptionist Portal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>10K+</h3>
+                    <p>Patients Managed</p>
+                </div>
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p>Clinics Using</p>
+                </div>
+                <div class="stat-box">
+                    <h3>500+</h3>
+                    <p>Healthcare Pros</p>
+                </div>
+                <div class="stat-box">
+                    <h3>99.9%</h3>
+                    <p>Uptime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📋</div>
+                    <h3>Patient Management</h3>
+                    <p>Automated token generation and complete patient information storage</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💊</div>
+                    <h3>Digital Prescriptions</h3>
+                    <p>Doctors can add prescriptions and consultations digitally</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💳</div>
+                    <h3>Automated Billing</h3>
+                    <p>Real-time bill generation with consultation fee tracking</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Backend</h3>
+                    <p>Enterprise-grade security with Firebase encryption</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Track daily statistics and clinic performance metrics</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Reliable</h3>
+                    <p>Lightning-fast performance with 99.9% uptime guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portals Section -->
+    <section class="portals" id="portals">
+        <div class="container">
+            <h2>Choose Your Portal</h2>
+            <div class="portals-grid">
+                <!-- Doctor Portal -->
+                <div class="portal-card doctor-card">
+                    <div class="portal-header">
+                        <div class="portal-icon">👨‍⚕️</div>
+                        <h3>Doctor Portal</h3>
+                    </div>
+                    <p>Manage consultations and patient care</p>
+                    <ul class="portal-list">
+                        <li>View patient queue with token numbers</li>
+                        <li>Access complete patient history</li>
+                        <li>Add prescriptions and diagnosis</li>
+                        <li>Track consultation records</li>
+                    </ul>
+                    <a href="doctor-login.html" class="btn btn-primary btn-portal">Enter Portal</a>
+                </div>
+
+                <!-- Receptionist Portal -->
+                <div class="portal-card receptionist-card">
+                    <div class="portal-header">
+                        <div class="portal-icon">👔</div>
+                        <h3>Receptionist Portal</h3>
+                    </div>
+                    <p>Manage clinic operations and billing</p>
+                    <ul class="portal-list">
+                        <li>Register new patients easily</li>
+                        <li>Auto-generate token numbers</li>
+                        <li>Generate and manage bills</li>
+                        <li>View daily statistics</li>
+                    </ul>
+                    <a href="receptionist-login.html" class="btn btn-primary btn-portal">Enter Portal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Apollo CMS</h4>
+                    <p>Professional healthcare management for modern clinics</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#portals">Portals</a></li>
+                        <li><a href="doctor-login.html">Doctor Login</a></li>
+                        <li><a href="receptionist-login.html">Receptionist Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact & Support</h4>
+                    <p>📧 support@apollocms.com</p>
+                    <p>📞 1-800-APOLLO-1</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Apollo Clinic Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

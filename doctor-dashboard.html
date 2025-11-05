@@ -19,33 +19,93 @@
         
         <!-- Dashboard Content -->
         <div class="dashboard-container">
-            <div class="dashboard-header">
-                <div>
-                    <h1>Doctor Dashboard</h1>
-                    <p class="header-subtitle">Manage consultations and patient care</p>
+            <!-- Header with Welcome Message -->
+            <div class="dashboard-welcome">
+                <div class="welcome-content">
+                    <h1>Welcome Back! 👋</h1>
+                    <p>Manage your patients and consultations today</p>
+                </div>
+                <div class="welcome-date">
+                    <span id="currentDate"></span>
                 </div>
             </div>
             
-            <!-- Statistics -->
+            <!-- Quick Stats -->
             <div class="stats-grid">
                 <div class="stat-card">
+                    <div class="stat-icon">📋</div>
                     <h3>Patients Today</h3>
                     <div class="stat-number" id="patientsToday">0</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
                     <h3>Pending Consultations</h3>
                     <div class="stat-number" id="pendingCount">0</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon">✅</div>
                     <h3>Completed Today</h3>
                     <div class="stat-number" id="completedCount">0</div>
                 </div>
             </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <div class="info-card">
+                    <h4>💡 How to Use</h4>
+                    <p>View the patient queue below, select a patient, and add their prescription after consultation. All data is automatically saved to the system.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📊 Today's Summary</h4>
+                    <p>You have <span id="totalPendingSummary">0</span> pending consultations waiting. Manage them efficiently to provide better care.</p>
+                </div>
+            </div>
             
-            <!-- Patient Queue -->
-            <div class="patient-list-section">
-                <h2>Patient Queue</h2>
+            <!-- Patient Queue Section -->
+            <div class="patient-section">
+                <div class="section-header">
+                    <div>
+                        <h2>Patient Queue</h2>
+                        <p class="section-subtitle">Manage consultations and patient care</p>
+                    </div>
+                    <div class="queue-status">
+                        <span class="status-indicator">🟢 Active</span>
+                    </div>
+                </div>
+                
                 <div id="patientList" class="patient-cards"></div>
+                
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <div class="empty-icon">😌</div>
+                    <h3>No patients yet</h3>
+                    <p>All patients for today have been processed. Great work!</p>
+                </div>
+            </div>
+
+            <!-- Footer Info -->
+            <div class="dashboard-footer-info">
+                <div class="footer-info-item">
+                    <span class="footer-icon">⚙️</span>
+                    <div>
+                        <strong>Professional Care</strong>
+                        <p>Ensure accurate prescriptions for better patient outcomes</p>
+                    </div>
+                </div>
+                <div class="footer-info-item">
+                    <span class="footer-icon">🔒</span>
+                    <div>
+                        <strong>Secure & Private</strong>
+                        <p>All patient data is encrypted and secure</p>
+                    </div>
+                </div>
+                <div class="footer-info-item">
+                    <span class="footer-icon">⏱️</span>
+                    <div>
+                        <strong>Real-time Updates</strong>
+                        <p>Data syncs instantly across the clinic</p>
+                    </div>
+                </div>
             </div>
             
             <!-- Prescription Modal -->
@@ -84,6 +144,15 @@
         </div>
     </div>
     
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+    </script>
     <script type="module" src="js/doctor.js"></script>
 </body>
 </html>
