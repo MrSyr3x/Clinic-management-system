@@ -132,10 +132,3 @@ If you'd like to connect your own Firebase project:
 💻 Developer passionate about full-stack web development and healthcare tech.  
 📫 GitHub: [@MrSyr3x](https://github.com/MrSyr3x)
 
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
-> _"Simplifying healthcare management, one clinic at a time."_ 🩺
